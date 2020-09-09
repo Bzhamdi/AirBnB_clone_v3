@@ -53,27 +53,21 @@ class DBStorage:
     
     def get(self, cls, id):
         """query for get by id"""
-        new_dict = {}
-        for clss in classes:
-            if cls is None or cls is classes[clss] or cls is clss:
-                obj = self.__session.query(classes[clss]).get(id)  
-                key = obj.__class__.__name__ + '.' + obj.id
-                new_dict[key] = obj
-        return (new_dict)  
+        if cls is None or id is None:
+            return None
+        for i in self.all(cls).values():
+            if i.id == id:
+                return i
 
     def count(self, cls=None):
+        a = 0
         if cls is not None:
-            return len(self.all(cls))-1
+            return len(self.all(cls))
         else:
-            new_dict = {}
-            
-            
-            obj = self.__session.query(cls).all()  
-            key = obj.__class__.__name__ + '.' + obj.id
-            new_dict[key] = obj
-            return (len(new_dict)- 1)
-
-
+            for clss in classes:
+                objs = self.__session.query(classes[clss]).all()
+                a = a + len(objs)
+            return (a)
 
     def new(self, obj):
         """add the object to the current database session"""

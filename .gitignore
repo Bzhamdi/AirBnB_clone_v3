@@ -1,3 +1,5 @@
 *.pyc
 __pycache
 file.json
+test.py
+test_get_count.py
