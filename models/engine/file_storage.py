@@ -49,8 +49,11 @@ class FileStorage:
         """count"""
         if cls is None:
             return len(self.all(None))
-        elif cls.__name__ in classes:
+        if type(cls) is str and cls in classes:
             return len(self.all(cls))
+        if type(cls) is not str:
+            if cls.__name__ in classes:
+                return len(self.all(cls.__name__))
         else:
             return 0
 

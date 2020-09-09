@@ -60,14 +60,14 @@ class DBStorage:
                 return i
 
     def count(self, cls=None):
-        a = 0
-        if cls is not None:
-            return len(self.all(cls))
+        """count db"""
+        if cls is None:
+            return len(self.all())
         else:
-            for clss in classes:
-                objs = self.__session.query(classes[clss]).all()
-                a = a + len(objs)
-            return (a)
+            if type(cls) is str:
+                return len(self.all(cls))
+            else:
+                return len(self.all(cls.__name__))
 
     def new(self, obj):
         """add the object to the current database session"""
