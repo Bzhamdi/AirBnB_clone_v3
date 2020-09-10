@@ -50,7 +50,7 @@ class DBStorage:
                     key = obj.__class__.__name__ + '.' + obj.id
                     new_dict[key] = obj
         return (new_dict)
-    
+
     def get(self, cls, id):
         """query for get by id"""
         if cls is None or id is None:
@@ -64,7 +64,7 @@ class DBStorage:
         if cls is None:
             return len(self.all())
         else:
-            if type(cls) is str:
+            if isinstance(cls, str):
                 return len(self.all(cls))
             else:
                 return len(self.all(cls.__name__))
