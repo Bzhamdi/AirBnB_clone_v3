@@ -45,7 +45,7 @@ def delete_byid(place_id):
     if f:
         storage.delete(f)
         storage.save()
-        return make_response(jsonify({}), 200)
+        return jsonify({})
     else:
         abort(404)
 
