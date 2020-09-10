@@ -14,7 +14,7 @@ app = Flask(__name__)
 
 @app_views.route('/cities/<city_id>/places',
                  methods=['GET'], strict_slashes=False)
-def retrieveallbystate(city_id):
+def retrieveal_lbystate(city_id):
     """retrieveall by state"""
     li = []
     f = storage.get(City, city_id)
@@ -29,7 +29,7 @@ def retrieveallbystate(city_id):
 
 
 @app_views.route('places/<place_id>', methods=['GET'], strict_slashes=False)
-def retrieveall(place_id):
+def retri_eveall(place_id):
     """retrieveall"""
     f = storage.get(Place, place_id)
     if f:
@@ -39,7 +39,7 @@ def retrieveall(place_id):
 
 
 @app_views.route('places/<place_id>', methods=['DELETE'], strict_slashes=False)
-def deletebyid(place_id):
+def delete_byid(place_id):
     """deletebyid"""
     f = storage.get(Place, place_id)
     if f:
@@ -52,7 +52,7 @@ def deletebyid(place_id):
 
 @app_views.route('/cities/<city_id>/places',
                  methods=['POST'], strict_slashes=False)
-def postcitybyid(city_id):
+def postci_tybyid(city_id):
     """postcitybyid"""
     if not request.get_json():
         return make_response(jsonify({'error': 'Not a JSON'}), 400)
@@ -70,7 +70,7 @@ def postcitybyid(city_id):
 
 
 @app_views.route('places/<place_id>', methods=['PUT'])
-def putcity(place_id):
+def put_city(place_id):
     """update ct"""
 
     ct = storage.get(Place, place_id)

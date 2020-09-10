@@ -9,6 +9,7 @@ from models.city import City
 
 
 app = Flask(__name__)
+app.register_blueprint(app_views)
 
 
 @app_views.route('/states/<state_id>/cities',
