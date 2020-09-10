@@ -77,14 +77,17 @@ def postci_tybyid(city_id):
 @app_views.route('places/<place_id>', methods=['PUT'])
 def put_city(place_id):
     """update ct"""
-
+    check = ['id', 'user_id', 'city_id', 'created_at',
+             'updated_at']
     ct = storage.get(Place, place_id)
     if ct is None:
         abort(404)
     if not request.get_json():
         return make_response(jsonify({'error': 'Not a JSON'}), 400)
     req_data = request.get_json()
-    ct.name = req_data['name']
+    for i, j in request.get_json().items():
+        if i not in check:
+            setattr(ct, i, j)
     ct.save()
     return jsonify(ct.to_dict())
 
