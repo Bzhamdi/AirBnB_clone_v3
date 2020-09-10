@@ -54,8 +54,6 @@ class FileStorage:
         if type(cls) is not str:
             if cls.__name__ in classes:
                 return len(self.all(cls.__name__))
-        else:
-            return 0
 
     def new(self, obj):
         """sets in __objects the obj with key <obj class name>.id"""

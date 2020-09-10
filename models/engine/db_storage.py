@@ -58,6 +58,8 @@ class DBStorage:
         for i in self.all(cls).values():
             if i.id == id:
                 return i
+            else:
+                return None
 
     def count(self, cls=None):
         """count db"""
