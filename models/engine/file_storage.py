@@ -35,7 +35,7 @@ class FileStorage:
         return self.__objects
 
     def get(self, cls, id):
-        """query for get by id"""
+        """query for get by id file storage"""
         if id and cls:
             for i in self.all(cls).values():
                 if i.id == id:
@@ -44,7 +44,7 @@ class FileStorage:
             return None
 
     def count(self, cls=None):
-        """count"""
+        """count file storage"""
         if cls is None:
             return len(self.all(None))
         if type(cls) is str and cls in classes:
