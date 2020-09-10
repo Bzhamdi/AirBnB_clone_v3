@@ -39,7 +39,9 @@ def retrAi_eveall(review_id):
         abort(404)
 
 
-@app_views.route('reviews/<review_id>', methods=['DELETE'], strict_slashes=False)
+@app_views.route('reviews/<review_id>',
+                 methods=['DELETE'],
+                 strict_slashes=False)
 def deleAte_byid(review_id):
     """deletebyid"""
     f = storage.get(Review, review_id)
