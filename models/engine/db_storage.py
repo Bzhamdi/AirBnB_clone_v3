@@ -52,7 +52,7 @@ class DBStorage:
         return (new_dict)
     
     def get(self, cls, id):
-        """query for get by id"""
+        """query for get by id dbstoraage"""
         if cls is None or id is None:
             return None
         for i in self.all(cls).values():

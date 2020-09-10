@@ -124,7 +124,7 @@ class TestFileStorage(unittest.TestCase):
 
     @unittest.skipIf(models.storage_t == 'db', "not testing file storage")
     def test_count2(self):
-        """Test count"""
+        """Test count file storage"""
         b = len(models.storage.all("State"))
         a = State()
         models.storage.new(a)
