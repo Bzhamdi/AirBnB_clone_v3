@@ -22,12 +22,7 @@ def create_users():
     if p not in request.get_json():
         return make_response(jsonify({'error': 'Missing password'}), 400)
     req_data = request.get_json()
-    user = User()
-
-    user.password = req_data['password']
-    user.first_name = req_data['first_name']
-    user.last_name = req_data['last_name']
-    
+    user = User(**req_data)
     user.save()
     return make_response(jsonify(user.to_dict()), 201)
 
