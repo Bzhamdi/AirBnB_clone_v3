@@ -42,7 +42,7 @@ def update_user(user_id):
     user.password = req_data['password']
     user.first_name = req_data['first_name']
     user.last_name = req_data['last_name']
-    user.email = req_data['email']
+    
 
     user.save()
     return jsonify(user.to_dict())
